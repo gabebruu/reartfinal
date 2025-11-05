@@ -1,0 +1,11 @@
+{
+  "name": "Sobre Fábio",
+  "bio": "Transformo materiais reciclados em peças de moda sustentável. Cada coleção nasce da vontade de reduzir o desperdício e criar beleza a partir do que seria descartado — peças que carregam histórias, consciência ambiental e expressão artística.",
+  "mission": "Promover uma moda mais consciente, prolongando a vida dos materiais através da criatividade. Cada peça é um convite para repensar o consumo, valorizar o artesanal e cuidar do planeta com escolhas mais responsáveis.",
+  "image": "/fabio.jpg",
+  "location": "Porto, Portugal",
+  "socials": {
+    "instagram": "https://instagram.com/reartstudio"
+  },
+  "highlight": "Todas as peças são feitas à mão, utilizando têxteis reciclados e materiais sustentáveis, reforçando o compromisso com a moda circular."
+}
