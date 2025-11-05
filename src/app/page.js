@@ -22,21 +22,63 @@ export default function LoginPage() {
   useEffect(() => {
     if (status === "authenticated") router.push("/dashboard");
     
-    // Carregar o último email salvo do localStorage
-    const lastEmail = localStorage.getItem("lastLoggedInEmail");
-    if (lastEmail) {
-      setEmail(lastEmail);
+    // Carregar o último email salvo do localStorage (apenas no cliente)
+    if (typeof window !== "undefined") {
+      const lastEmail = localStorage.getItem("lastLoggedInEmail");
+      if (lastEmail) {
+        setEmail(lastEmail);
+      }
     }
 
     // Verificar se o Google Provider está disponível
-    fetch("/api/auth/providers")
-      .then((res) => res.json())
-      .then((providers) => {
-        setHasGoogleProvider(!!providers?.google);
-      })
-      .catch(() => {
+    // Tentar buscar da API, mas não quebrar se falhar
+    const checkProviders = async () => {
+      try {
+        const res = await fetch("/api/auth/providers", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        // Verificar se a resposta é JSON
+        const contentType = res.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          // Se não for JSON, provavelmente é HTML de erro - não mostrar Google Provider
+          setHasGoogleProvider(false);
+          return;
+        }
+
+        if (!res.ok) {
+          // Se a resposta não for OK, não mostrar Google Provider
+          setHasGoogleProvider(false);
+          return;
+        }
+
+        // Tentar parsear JSON, mas tratar erros
+        let providers;
+        try {
+          const text = await res.text();
+          providers = JSON.parse(text);
+        } catch (parseError) {
+          // Se não conseguir parsear como JSON, não mostrar Google Provider
+          setHasGoogleProvider(false);
+          return;
+        }
+
+        if (providers && typeof providers === "object") {
+          setHasGoogleProvider(!!providers?.google);
+        } else {
+          setHasGoogleProvider(false);
+        }
+      } catch (error) {
+        // Qualquer erro - simplesmente não mostrar o botão do Google
+        // Não logar o erro para evitar poluir o console
         setHasGoogleProvider(false);
-      });
+      }
+    };
+
+    checkProviders();
   }, [status, router]);
 
   if (status === "loading") {
@@ -116,7 +158,9 @@ export default function LoginPage() {
       }
 
       if (res?.ok) {
-        localStorage.setItem("lastLoggedInEmail", email); // Salva o email no localStorage
+        if (typeof window !== "undefined") {
+          localStorage.setItem("lastLoggedInEmail", email); // Salva o email no localStorage
+        }
         router.push("/dashboard");
         router.refresh();
       }

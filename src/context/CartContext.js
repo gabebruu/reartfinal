@@ -13,6 +13,10 @@ export const CartProvider = ({ children }) => {
 
   // Carregar itens do localStorage ao iniciar
   useEffect(() => {
+    if (typeof window === "undefined") {
+      setLoading(false);
+      return;
+    }
     try {
       const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
       setCartItems(storedCart);
@@ -26,8 +30,11 @@ export const CartProvider = ({ children }) => {
 
   // Atualiza o localStorage sempre que o carrinho mudar
   useEffect(() => {
-    if (!loading) {
+    if (typeof window === "undefined" || loading) return;
+    try {
       localStorage.setItem("cart", JSON.stringify(cartItems));
+    } catch (error) {
+      console.error("Failed to save cart to localStorage", error);
     }
   }, [cartItems, loading]);
 

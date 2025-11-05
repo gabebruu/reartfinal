@@ -13,6 +13,10 @@ export const FavoritesProvider = ({ children }) => {
 
   // Carregar favoritos do localStorage ao iniciar
   useEffect(() => {
+    if (typeof window === "undefined") {
+      setLoading(false);
+      return;
+    }
     try {
       const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
       setFavorites(storedFavorites);
@@ -26,8 +30,11 @@ export const FavoritesProvider = ({ children }) => {
 
   // Atualiza o localStorage sempre que os favoritos mudarem
   useEffect(() => {
-    if (!loading) {
+    if (typeof window === "undefined" || loading) return;
+    try {
       localStorage.setItem("favorites", JSON.stringify(favorites));
+    } catch (error) {
+      console.error("Failed to save favorites to localStorage", error);
     }
   }, [favorites, loading]);
 

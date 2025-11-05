@@ -120,6 +120,7 @@ const handler = NextAuth({
     pages: {
         signIn: "/",
     },
+    debug: process.env.NODE_ENV === "development",
 });
 
 export { handler as GET, handler as POST };
