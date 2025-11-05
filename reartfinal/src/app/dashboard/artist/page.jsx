@@ -61,7 +61,7 @@ export default function ArtistPage() {
 
         <div className="bg-[#DDEFE4] border border-[#3B7F4A]/30 rounded-lg p-4 shadow-sm">
           <p className="text-sm text-[#3B7F4A]">
-            <strong>✨ Destaque:</strong> {artistData.highlight}
+            <strong>Destaque:</strong> {artistData.highlight}
           </p>
         </div>
       </div>

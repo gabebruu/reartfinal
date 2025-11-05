@@ -136,7 +136,7 @@ export default function LoginPage() {
         <div className="text-center pt-16 px-6">
           <h1 className="text-4xl font-extrabold text-green-600">ReArt</h1>
           <p className="mt-2 text-gray-500 text-sm">
-            Moda circular. Impacto real 🌍
+            Moda circular. Impacto real
           </p>
         </div>
 

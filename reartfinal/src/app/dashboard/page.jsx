@@ -77,7 +77,7 @@ export default function DashboardPage() {
 
   const handleAddToCart = (item) => {
     addToCart(item);
-    setToastMessage(`${item.name} foi adicionado ao carrinho 🛒`);
+    setToastMessage(`${item.name} foi adicionado ao carrinho`);
     setShowToast(true);
     setSelectedItem(null);
     setTimeout(() => {
@@ -90,7 +90,7 @@ export default function DashboardPage() {
     toggleFavorite(item);
     const message = isFavorite(item.name)
       ? `${item.name} removido dos favoritos`
-      : `${item.name} adicionado aos favoritos ❤️`;
+      : `${item.name} adicionado aos favoritos`;
     setToastMessage(message);
     setShowToast(true);
     setTimeout(() => setShowToast(false), 2500);
@@ -163,7 +163,7 @@ export default function DashboardPage() {
 
       {/* Info Card */}
       <div className="bg-[#DDEFE4] rounded-xl p-6 border border-[#3B7F4A]/30 shadow-sm">
-        <h3 className="text-lg font-semibold text-[#3B7F4A] mb-2">💡 Sobre o ReArt</h3>
+        <h3 className="text-lg font-semibold text-[#3B7F4A] mb-2">Sobre o ReArt</h3>
         <p className="text-[#7A5F47] text-sm">
           A ReArt é uma plataforma de moda circular que transforma doações de roupas e resíduos têxteis em peças únicas, sustentáveis e carregadas de propósito. Por meio de processos artesanais e de baixo impacto ambiental, resgatamos materiais que iriam para o descarte e lhes damos nova vida, evitando o consumo de recursos virgens e reduzindo a poluição da indústria da moda.
         </p>
@@ -183,7 +183,7 @@ export default function DashboardPage() {
             <img
               src={selectedItem.src}
               alt={selectedItem.name}
-              className="w-full h-48 object-cover rounded-t-xl"
+              className="w-full h-80 object-contain rounded-t-xl bg-gray-100"
             />
 
             <div className="p-5">

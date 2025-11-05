@@ -45,7 +45,7 @@ function RecenterButton({ userLocation }) {
             className="absolute bottom-24 right-4 bg-white shadow-lg rounded-full p-3 z-1000
       border border-gray-200 active:scale-95 transition"
         >
-            🎯
+            Centrar
         </button>
     );
 }
@@ -83,13 +83,13 @@ export default function MapPage() {
 
                     {/* Usuario */}
                     <Marker position={userLocation} icon={userIcon}>
-                        <Popup>📍 Estás aqui</Popup>
+                        <Popup>Estás aqui</Popup>
                     </Marker>
 
                     {/* Puntos de reciclaje */}
                     {recyclingPoints.map((p) => (
                         <Marker key={p.id} position={p.position} icon={recycleIcon}>
-                            <Popup>♻️ {p.name}</Popup>
+                            <Popup>{p.name}</Popup>
                         </Marker>
                     ))}
 
