@@ -26,7 +26,7 @@ export default function CartPage() {
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Carrinho de Compras</h1>
         </div>
         <p className="text-[#F8F5ED] mt-2 text-sm md:text-base font-light">
-          Cada peça conta uma história de reuso
+          Cada peça conta uma história de reuso ♻️✨
         </p>
       </div>
 
@@ -46,7 +46,7 @@ export default function CartPage() {
             Seu carrinho está vazio
           </h2>
           <p className="text-gray-600 max-w-md mx-auto mb-4">
-            A moda consciente começa com escolhas que respeitam a Terra
+            A moda consciente começa com escolhas que respeitam a Terra 🌍
           </p>
           <p className="text-[#6B8E63] font-medium mb-6">
             Descubra peças únicas feitas com materiais reciclados.
@@ -144,7 +144,7 @@ export default function CartPage() {
             </button>
 
             <p className="text-center text-xs text-gray-500 mt-3">
-              Sua compra apoia o artesanato sustentável
+              Sua compra apoia o artesanato sustentável ♻️
             </p>
           </div>
         </>

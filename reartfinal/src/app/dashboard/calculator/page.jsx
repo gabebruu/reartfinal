@@ -43,7 +43,7 @@ export default function CalculatorPage() {
         <div>
           <h1 className="text-3xl font-bold">Calculadora Sustentável</h1>
           <p className="text-[#F8F5ED] text-sm">
-            Veja o impacto positivo das suas doações
+            Veja o impacto positivo das suas doações 🌍✨
           </p>
         </div>
       </div>
@@ -56,11 +56,11 @@ export default function CalculatorPage() {
         </h2>
 
         {/* Contador */}
-        <div className="flex flex-col items-center">
-          <label className="block text-sm font-medium text-gray-700 mb-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             Quantos itens você doou? (Máx. 20)
           </label>
-          <div className="flex items-center gap-2 border border-[#C7B9A3] rounded-lg bg-white">
+          <div className="flex items-center gap-2 border border-[#C7B9A3] rounded-lg w-fit bg-white">
             <button
               onClick={() => handleDonatedItemsChange({ target: { value: donatedItems - 1 } })}
               className="p-2 hover:bg-[#EFE8D6]"
@@ -85,7 +85,7 @@ export default function CalculatorPage() {
           <div>
             <h3 className="text-lg font-semibold text-gray-800">Seu Desconto ReArt:</h3>
             <p className="text-3xl font-bold text-[#6B8E63]">{discount.toFixed(0)}% OFF</p>
-            <p className="text-sm text-gray-600">Recompensa pelo seu cuidado com o planeta</p>
+            <p className="text-sm text-gray-600">Recompensa pelo seu cuidado com o planeta 🌱</p>
           </div>
         </div>
 

@@ -25,7 +25,7 @@ export default function FavoritesPage() {
         <div>
           <h1 className="text-3xl font-bold">Meus Favoritos</h1>
           <p className="text-[#F8F5ED] text-sm">
-            Peças que combinam com sua essência
+            Peças que combinam com sua essência 🌿✨
           </p>
         </div>
       </div>
@@ -38,7 +38,7 @@ export default function FavoritesPage() {
             Nenhum favorito ainda
           </h2>
           <p className="text-gray-500 mb-2">
-            Quando algo tocar seu coração, marque como favorito
+            Quando algo tocar seu coração, marque como favorito ❤️
           </p>
           <p className="text-[#6B8E63] font-semibold">
             A moda consciente começa pelo afeto.

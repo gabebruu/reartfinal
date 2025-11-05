@@ -1,4 +1,4 @@
-"use client"; //page
+"use client";
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -77,7 +77,7 @@ export default function DashboardPage() {
 
   const handleAddToCart = (item) => {
     addToCart(item);
-    setToastMessage(`${item.name} foi adicionado ao carrinho`);
+    setToastMessage(`${item.name} foi adicionado ao carrinho 🛒`);
     setShowToast(true);
     setSelectedItem(null);
     setTimeout(() => {
@@ -90,7 +90,7 @@ export default function DashboardPage() {
     toggleFavorite(item);
     const message = isFavorite(item.name)
       ? `${item.name} removido dos favoritos`
-      : `${item.name} adicionado aos favoritos`;
+      : `${item.name} adicionado aos favoritos ❤️`;
     setToastMessage(message);
     setShowToast(true);
     setTimeout(() => setShowToast(false), 2500);
@@ -129,7 +129,7 @@ export default function DashboardPage() {
               <img
                 src={item.src}
                 alt={item.name}
-                className="w-full h-48 object-cover"
+                className="w-full h-40 object-cover"
               />
 
               {/* Botão de favoritar — no canto superior direito da imagem */}
@@ -162,12 +162,9 @@ export default function DashboardPage() {
       </div>
 
       {/* Info Card */}
-      <div className="bg-[#DDEFE4] rounded-xl p-6 border border-[#3B7F4A]/30 shadow-sm hover:shadow-md transition-all duration-300 group">
-        <h3 className="text-lg font-semibold text-[#3B7F4A] mb-3 flex items-center gap-2">
-          <span className="w-1.5 h-6 bg-[#3B7F4A] rounded-full group-hover:h-8 transition-all duration-300"></span>
-          Sobre o ReArt
-        </h3>
-        <p className="text-[#7A5F47] text-sm leading-relaxed">
+      <div className="bg-[#DDEFE4] rounded-xl p-6 border border-[#3B7F4A]/30 shadow-sm">
+        <h3 className="text-lg font-semibold text-[#3B7F4A] mb-2">💡 Sobre o ReArt</h3>
+        <p className="text-[#7A5F47] text-sm">
           A ReArt é uma plataforma de moda circular que transforma doações de roupas e resíduos têxteis em peças únicas, sustentáveis e carregadas de propósito. Por meio de processos artesanais e de baixo impacto ambiental, resgatamos materiais que iriam para o descarte e lhes damos nova vida, evitando o consumo de recursos virgens e reduzindo a poluição da indústria da moda.
         </p>
       </div>
@@ -175,36 +172,34 @@ export default function DashboardPage() {
       {/* Modal */}
       {selectedItem && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-md w-full shadow-lg relative max-h-[90vh] overflow-hidden">
+          <div className="bg-white rounded-xl max-w-sm w-full shadow-lg relative">
             <button
               onClick={() => setSelectedItem(null)}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 z-10"
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
             >
               <X size={20} />
             </button>
 
-            <div className="max-h-[60vh] overflow-hidden">
-              <img
-                src={selectedItem.src}
-                alt={selectedItem.name}
-                className="w-full h-full object-contain bg-gray-50"
-              />
-            </div>
+            <img
+              src={selectedItem.src}
+              alt={selectedItem.name}
+              className="w-full h-48 object-cover rounded-t-xl"
+            />
 
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-[#3B7F4A] mb-2">
+            <div className="p-5">
+              <h3 className="text-lg font-bold text-[#3B7F4A] mb-1">
                 {selectedItem.name}
               </h3>
-              <p className="text-base text-[#7A5F47] mb-4 leading-relaxed">
+              <p className="text-sm text-[#7A5F47] mb-3">
                 {selectedItem.description}
               </p>
-              <p className="text-2xl font-bold text-[#3B7F4A] mb-6">
+              <p className="text-lg font-semibold text-[#3B7F4A] mb-4">
                 €{selectedItem.price.toFixed(2)}
               </p>
 
               <button
                 onClick={() => handleAddToCart(selectedItem)}
-                className="w-full bg-[#3B7F4A] hover:bg-[#31633B] text-white font-medium py-3 rounded-lg transition shadow-sm"
+                className="w-full bg-[#3B7F4A] hover:bg-[#31633B] text-white font-medium py-2 rounded-lg transition shadow-sm"
               >
                 Adicionar ao Carrinho
               </button>

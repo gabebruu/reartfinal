@@ -88,17 +88,8 @@ export default function MapPage() {
 
                     {/* Puntos de reciclaje */}
                     {recyclingPoints.map((p) => (
-                        <Marker
-                            key={p.id}
-                            position={p.position}
-                            icon={recycleIcon}
-                            eventHandlers={{
-                                click: () => {
-                                    window.open(`https://www.google.com/maps/search/?api=1&query=${p.position[0]},${p.position[1]}`, '_blank');
-                                },
-                            }}
-                        >
-                            <Popup>{p.name}</Popup>
+                        <Marker key={p.id} position={p.position} icon={recycleIcon}>
+                            <Popup>♻️ {p.name}</Popup>
                         </Marker>
                     ))}
 
